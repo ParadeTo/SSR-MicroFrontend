@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "buildall": "pnpm run build --filter \"{packages}\"",
+    "serve": "http-server ./packages -p 8080"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
+    "@babel/preset-react": "^7.18.6",
+    "@purtuga/esm-webpack-plugin": "^1.5.0",
+    "babel-loader": "^8.2.5",
+    "http-server": "^14.1.1",
+    "webpack": "4",
+    "webpack-cli": "4",
+    "webpack-merge": "4"
+  },
+  "dependencies": {
+    "node-fetch": "2",
+    "systemjs": "^6.12.6"
+  }
+}
