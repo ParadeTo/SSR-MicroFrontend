@@ -4,7 +4,7 @@ import SimpleComp from './SimpleComp'
 
 const App = () => {
   return (
-    <div className={styles.title}>
+    <div className={styles.title} onClick={() => window.alert('app1')}>
       I am App1! <SimpleComp />
     </div>
   )

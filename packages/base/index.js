@@ -46,6 +46,8 @@ app.get('/', async (req, res) => {
   <body>
     <div id="navbar"></div>
     <div id="app1"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   </body>
 </html>
 `)
@@ -74,7 +76,6 @@ app.get('/', async (req, res) => {
       'http://localhost:8080',
       templateDoc
     )
-    console.log(templateDOM.serialize())
     res.end(templateDOM.serialize())
   } catch (error) {
     console.log(error)

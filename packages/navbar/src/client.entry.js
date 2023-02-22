@@ -1,5 +1,5 @@
 import React from 'react'
-import {hydrate} from 'react-dom'
+import {hydrateRoot} from 'react-dom'
 import App from './App'
 
-hydrate(<App />, document.getElementById('navbar'))
+hydrateRoot(document.getElementById('navbar'), <App />)
