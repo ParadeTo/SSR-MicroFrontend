@@ -21,13 +21,6 @@ const baseConfig = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        options: {
-          generatorOpts: {
-            retainLines: true,
-            compact: true,
-            shouldPrintComment: (c) => /^#__PURE__$/.test(c),
-          },
-        },
       },
     ],
   },

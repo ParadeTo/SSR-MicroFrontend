@@ -1,7 +1,8 @@
 {
   "scripts": {
     "buildall": "pnpm run build --filter \"{packages}\"",
-    "serve": "http-server ./packages -p 8080"
+    "staticServe": "http-server ./packages -p 8080",
+    "start": "pnpm run start --filter base"
   },
   "devDependencies": {
     "@babel/core": "^7.19.0",
