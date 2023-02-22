@@ -1,7 +1,13 @@
 import React from 'react'
+import styles from './App.css'
+import SimpleComp from './SimpleComp'
 
 const App = () => {
-  return <nav>I am Navbar! React Version</nav>
+  return (
+    <div className={styles.title}>
+      I am Navbar! <SimpleComp />
+    </div>
+  )
 }
 
 export default App

@@ -1,20 +1,19 @@
 const webpack = require('webpack')
 const path = require('path')
-const merge = require('webpack-merge')
+const {merge} = require('webpack-merge')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const {WebpackManifestPlugin} = require('webpack-manifest-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 const baseConfig = {
   context: path.resolve(__dirname, 'src'),
   devtool: 'cheap-source-map',
-  mode: 'production',
+  mode: 'development',
   stats: {
     all: false,
     warnings: true,
     errors: true,
     errorDetails: true,
-  },
-  output: {
-    libraryTarget: 'commonjs2',
-    path: path.resolve(__dirname, 'build'),
   },
   module: {
     rules: [
@@ -32,7 +31,6 @@ const baseConfig = {
       },
     ],
   },
-  externals: [/react/, /react-dom/],
 }
 
 module.exports = (_, env) => [
@@ -45,7 +43,25 @@ module.exports = (_, env) => [
     },
     output: {
       filename: 'server.js',
-      // libraryTarget: 'commonjs2',
+      libraryTarget: 'commonjs2',
+    },
+    externals: [/react/, /react-dom/],
+    module: {
+      rules: [
+        {
+          test: /\.css?$/,
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  exportOnlyLocals: true,
+                },
+              },
+            },
+          ],
+        },
+      ],
     },
   }),
   merge(baseConfig, {
@@ -53,6 +69,29 @@ module.exports = (_, env) => [
     entry: './client.entry',
     output: {
       filename: 'client.js',
+      publicPath: '/navbar/dist',
+    },
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM',
+    },
+    plugins: [new MiniCssExtractPlugin(), new WebpackManifestPlugin()],
+    module: {
+      rules: [
+        {
+          test: /\.css?$/,
+          exclude: /node_modules/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+              },
+            },
+          ],
+        },
+      ],
     },
   }),
 ]

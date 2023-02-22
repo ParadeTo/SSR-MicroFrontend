@@ -10,12 +10,15 @@
     "@purtuga/esm-webpack-plugin": "^1.5.0",
     "babel-loader": "^8.2.5",
     "http-server": "^14.1.1",
+    "mini-css-extract-plugin": "^2.7.2",
     "webpack": "4",
     "webpack-cli": "4",
     "webpack-merge": "4"
   },
   "dependencies": {
+    "css-loader": "4",
     "node-fetch": "2",
+    "style-loader": "2",
     "systemjs": "^6.12.6"
   }
 }
