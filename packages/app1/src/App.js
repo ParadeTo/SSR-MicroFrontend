@@ -1,20 +1,17 @@
 import React, {lazy, Suspense} from 'react'
-import DataFetchComp from './DataFetchComp'
+import List from './List'
 const LazyComp = lazy(() => import('./LazyComp'))
 const SimpleComp = lazy(() => import('./SimpleComp'))
 
 const App = () => {
   return (
     <div>
-      I am App1!
-      <Suspense fallback={<p>loading simple comp</p>}>
-        <SimpleComp />
-      </Suspense>
-      {/* <Suspense fallback={<p>loading lazy comp</p>}>
-        <LazyComp />
-      </Suspense> */}
-      <Suspense fallback={<p>loading data fetching comp</p>}>
-        <DataFetchComp />
+      <header
+        style={{height: '100px', lineHeight: '100px', textAlign: 'center'}}>
+        Header
+      </header>
+      <Suspense fallback={<p>Loading...</p>}>
+        <List />
       </Suspense>
     </div>
   )

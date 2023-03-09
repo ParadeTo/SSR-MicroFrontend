@@ -1,7 +1,7 @@
 import {renderToString, renderToPipeableStream} from 'react-dom/server'
 import React from 'react'
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
-
+import {Hydrate, QueryClientProvider} from '@tanstack/react-query'
+import {EventEmitterContext} from './context'
 import App from './App'
 
 export function renderAppToString() {
@@ -9,19 +9,21 @@ export function renderAppToString() {
   return {content}
 }
 
-export function renderAppToPipeableStream(options) {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        suspense: true,
-      },
-    },
-  })
-
-  return renderToPipeableStream(
+export function renderAppToPipeableStream(
+  options,
+  queryClient,
+  dehydratedState,
+  ee
+) {
+  const stream = renderToPipeableStream(
     <QueryClientProvider client={queryClient}>
-      <App />
+      <Hydrate state={dehydratedState}>
+        <EventEmitterContext.Provider value={ee}>
+          <App />
+        </EventEmitterContext.Provider>
+      </Hydrate>
     </QueryClientProvider>,
     options
   )
+  return stream
 }
