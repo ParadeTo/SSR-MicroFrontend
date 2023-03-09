@@ -1,8 +1,10 @@
 import React from 'react'
-import styles from './style.css'
+// import styles from './style.css'
 
 const SimpleComp = () => {
-  return <span className={styles.text}>Simple Component</span>
+  return (
+    <div onClick={() => window.alert('Simple Component')}>Simple Component</div>
+  )
 }
 
 export default SimpleComp

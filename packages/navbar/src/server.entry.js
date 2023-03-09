@@ -3,7 +3,7 @@ import React from 'react'
 
 import App from './App'
 
-export function renderOnServerSide() {
+export function renderAppToString() {
   const content = renderToString(<App />)
   return {content}
 }

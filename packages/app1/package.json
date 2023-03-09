@@ -1,16 +1,25 @@
 {
   "name": "app1",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "babel-node server.js"
   },
   "dependencies": {
+    "@babel/node": "^7.20.7",
+    "@tanstack/react-query": "^4.26.1",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
+    "express": "^4.18.1",
+    "isomorphic-fetch": "^3.0.0",
     "isomorphic-style-loader": "^5.3.2",
+    "jsdom": "^21.1.0",
     "mini-css-extract-plugin": "^2.7.2",
+    "node-fetch": "2",
     "react": "18.0.0",
+    "react-cache": "2.0.0-alpha.1",
     "react-dom": "18.0.0",
     "style-loader": "^3.3.1",
+    "use-sync-external-store": "^1.2.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-manifest-plugin": "^5.0.0",
