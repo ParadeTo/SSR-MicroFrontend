@@ -35,7 +35,9 @@ async function insertResources(manifestUrl, prefix, templateDoc) {
   }
 }
 
-app.get('/', async (req, res) => {
+app.get('/rendering')
+
+app.get('/stream-rendering', async (req, res) => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -114,6 +116,12 @@ app.get('/', async (req, res) => {
 app.get('/api/list', (req, res) => {
   setTimeout(() => {
     res.json([...Array(10)].map((_, index) => ({name: `ayou-${index}`})))
+  }, 10000)
+})
+
+app.get('/api/profile', (req, res) => {
+  setTimeout(() => {
+    res.json({name: 'paradeto', age: 3})
   }, 10000)
 })
 

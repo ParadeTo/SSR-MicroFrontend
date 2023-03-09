@@ -3,14 +3,14 @@ import('isomorphic-fetch')
 import {useQuery} from '@tanstack/react-query'
 import {EventEmitterContext} from '../context'
 
-async function getData() {
+async function getList() {
   const rsp = await fetch('http://localhost:9000/api/list')
   const data = await rsp.json()
   return data
 }
 
 const List = () => {
-  const query = useQuery(['data'], getData)
+  const query = useQuery(['data'], getList)
   const ee = useContext(EventEmitterContext)
   if (ee && query.data && ee) {
     ee.emit('updateState')

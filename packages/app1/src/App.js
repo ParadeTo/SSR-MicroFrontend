@@ -1,16 +1,15 @@
 import React, {lazy, Suspense} from 'react'
 import List from './List'
-const LazyComp = lazy(() => import('./LazyComp'))
-const SimpleComp = lazy(() => import('./SimpleComp'))
+import Profile from './Profile'
 
 const App = () => {
   return (
     <div>
-      <header
-        style={{height: '100px', lineHeight: '100px', textAlign: 'center'}}>
-        Header
-      </header>
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<p>Loading Profile...</p>}>
+        <Profile />
+      </Suspense>
+
+      <Suspense fallback={<p>Loading List...</p>}>
         <List />
       </Suspense>
     </div>
